@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login with Local Storage</title>
+</head>
+<body>
+    <h2>Login Form</h2>
+    <form id="loginForm">
+        <div>
+            <label>Username:</label>
+            <input type="text" id="username" required>
+        </div>
+        <div>
+            <label>Password:</label>
+            <input type="password" id="password" required>
+        </div>
+        <button type="submit">Login</button>
+    </form>
+
+    <div style="margin-top: 30px; background: #f5f5f5; padding: 15px;">
+        <h3>Answers:</h3>
+        <p><strong>1a.</strong> Yes, you can use session storage. It has the same API as localStorage.</p>
+        <p><strong>1b.</strong> localStorage persists until manually cleared. sessionStorage lasts only for the browser session/tab.</p>
+        <p><strong>1c.</strong> Yes, both can be accessed by any page from the same origin (same protocol, domain, and port).</p>
+    </div>
+
+    <script>
+        // Load saved credentials on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedUsername = localStorage.getItem('username');
+            const savedPassword = localStorage.getItem('password');
+            
+            if (savedUsername) {
+                document.getElementById('username').value = savedUsername;
+            }
+            if (savedPassword) {
+                document.getElementById('password').value = savedPassword;
+            }
+        });
+
+        // Handle form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Save to localStorage
+            localStorage.setItem('username', username);
+            localStorage.setItem('password', password);
+            
+            alert('Login successful! Credentials saved to localStorage.');
+        });
+    </script>
+</body>
+</html>

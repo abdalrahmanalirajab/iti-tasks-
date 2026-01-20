@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Manipulation</title>
+</head>
+<body>
+    <h1>DOM Manipulation Examples</h1>
+    
+    <div id="imageContainer">
+        <!-- Images will be added here -->
+    </div>
+    
+    <button onclick="createImage()">Create Image</button>
+    <button onclick="removeImage()">Remove Image</button>
+    <button onclick="countChildren()">Count Child Nodes</button>
+    
+    <p id="result"></p>
+
+    <script>
+        function createImage() {
+            // 7a: Create image node
+            const img = document.createElement('img');
+            
+            // 7b: Set source attribute
+            img.setAttribute('src', 'demo.jpg');
+            img.setAttribute('alt', 'Demo Image');
+            img.setAttribute('width', '200');
+            
+            const container = document.getElementById('imageContainer');
+            
+            // 7c: Append to div
+            container.appendChild(img); // Adds at the end
+            
+            // Try insertBefore to add at beginning
+            // const firstChild = container.firstChild;
+            // container.insertBefore(img, firstChild);
+            
+            document.getElementById('result').textContent = 'Image added!';
+        }
+        
+        function removeImage() {
+            const container = document.getElementById('imageContainer');
+            const img = container.querySelector('img');
+            
+            if (img) {
+                // 7e: Remove image
+                container.removeChild(img);
+                document.getElementById('result').textContent = 'Image removed!';
+            }
+        }
+        
+        function countChildren() {
+            const container = document.getElementById('imageContainer');
+            const count = container.childNodes.length;
+            
+            // 7d: Alert number of child nodes
+            alert(`Number of child nodes: ${count}`);
+            
+            // Explanation:
+            // The count includes all nodes: text nodes, element nodes, comment nodes
+            // Even whitespace between elements is counted as a text node
+        }
+    </script>
+</body>
+</html>

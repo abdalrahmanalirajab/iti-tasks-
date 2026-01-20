@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form with Terms</title>
+</head>
+<body>
+    <h1>Registration Form</h1>
+    
+    <form>
+        <div>
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName">
+        </div>
+        
+        <div>
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName">
+        </div>
+        
+        <div>
+            <input type="checkbox" id="terms" name="terms">
+            <label for="terms">
+                I agree to 
+                <a href="terms.html" target="_blank" id="termsLink">Terms and conditions</a>
+            </label>
+        </div>
+        
+        <button type="submit">Register</button>
+    </form>
+    
+    <script>
+        // Prevent form submission if terms not checked
+        document.querySelector('form').addEventListener('submit', function(event) {
+            const termsCheckbox = document.getElementById('terms');
+            
+            if (!termsCheckbox.checked) {
+                event.preventDefault();
+                alert("You must agree to the terms and conditions");
+            }
+        });
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Key and Mouse Events</title>
+</head>
+<body>
+    <h1>Key and Mouse Events Demo</h1>
+    
+    <input type="text" id="myTextbox" placeholder="Click here and type...">
+    
+    <script>
+        const textbox = document.getElementById('myTextbox');
+        
+        // Key press event
+        textbox.addEventListener('keydown', function(event) {
+            alert(`Key Code: ${event.keyCode}\nKey: ${event.key}`);
+        });
+        
+        // Mouse click event
+        textbox.addEventListener('mousedown', function(event) {
+            let buttonName;
+            switch(event.button) {
+                case 0:
+                    buttonName = "Left Mouse Button";
+                    break;
+                case 1:
+                    buttonName = "Middle Mouse Button";
+                    break;
+                case 2:
+                    buttonName = "Right Mouse Button";
+                    break;
+                default:
+                    buttonName = "Unknown Button";
+            }
+            alert(`Mouse Button: ${buttonName} (Button Code: ${event.button})`);
+        });
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML5 Form Validation</title>
+<!-- task4-->
+    <style>
+    input:valid {
+        background-image: url('valid.png');
+        background-position: right center;
+        background-repeat: no-repeat;
+        padding-right: 20px;
+    }
+    
+    input:invalid {
+        background-image: url('invalid.png');
+        background-position: right center;
+        background-repeat: no-repeat;
+        padding-right: 20px;
+    }
+</style>
+</head>
+<body>
+    <h1>Registration Form (HTML5 Validation)</h1>
+    <form id="html5Form">
+        <!-- Full Name with HTML5 validation -->
+        <div>
+            <label for="html5Name">Full Name:</label>
+            <input type="text" id="html5Name" name="html5Name" 
+                   placeholder="Enter your Name:" 
+                   pattern=".{4,}" 
+                   title="Name must be at least 4 characters"
+                   required>
+        </div>
+        
+        <!-- Email -->
+        <div>
+            <label for="html5Email">Email:</label>
+            <input type="email" id="html5Email" name="html5Email" required>
+        </div>
+        
+        <!-- City -->
+        <div>
+            <label for="html5City">City:</label>
+            <select id="html5City" name="html5City" required>
+                <option value="">Select City</option>
+                <option value="cairo">Cairo</option>
+                <option value="alex">Alexandria</option>
+                <option value="giza">Giza</option>
+            </select>
+        </div>
+        
+        <!-- Password with pattern -->
+        <div>
+            <label for="html5Password">Password:</label>
+            <input type="password" id="html5Password" name="html5Password" 
+                   pattern=".{6,}" 
+                   title="Password must be at least 6 characters"
+                   required>
+        </div>
+        
+        <!-- Repeat Password -->
+        <div>
+            <label for="html5RepeatPassword">Repeat Password:</label>
+            <input type="password" id="html5RepeatPassword" name="html5RepeatPassword" required>
+        </div>
+        
+        <!-- Terms -->
+        <div>
+            <input type="checkbox" id="html5Terms" name="html5Terms" required>
+            <label for="html5Terms">I accept the terms and conditions</label>
+        </div>
+        
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>

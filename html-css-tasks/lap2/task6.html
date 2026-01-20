@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tips Generator</title>
+</head>
+<body>
+    <h2>Tips Generator Demo</h2>
+    <button id="showAll">Show All Tips</button>
+    <button id="showInterval">Show Tips Every 3 Seconds</button>
+
+    <div id="output"></div>
+
+    <script>
+        // 1. Generator function
+        function* tipsGenerator() {
+            let tips = [
+                "Stay focused",
+                "Take breaks",
+                "Practice coding",
+                "Read documentation",
+                "Sleep well",
+                "Exercise",
+                "Ask questions",
+                "Review notes",
+                "Stay positive",
+                "Keep learning"
+            ];
+            for (let tip of tips) {
+                yield tip;
+            }
+        }
+
+        // Create generator instance
+        let gen = tipsGenerator();
+
+        // 2. Show all tips at once
+        document.getElementById("showAll").addEventListener("click", () => {
+            let output = document.getElementById("output");
+            output.innerHTML = ""; // clear old tips
+            for (let tip of tipsGenerator()) {
+                output.innerHTML += tip + "<br>";
+            }
+        });
+
+        // 3. Show tips every 3 seconds
+        document.getElementById("showInterval").addEventListener("click", () => {
+            let output = document.getElementById("output");
+            output.innerHTML = ""; // clear old tips
+            let gen2 = tipsGenerator();
+            setInterval(() => {
+                let nextTip = gen2.next().value;
+                if (nextTip) {
+                    output.innerHTML += nextTip + "<br>";
+                }
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

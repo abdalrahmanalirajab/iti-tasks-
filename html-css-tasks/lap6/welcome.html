@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome Page</title>
+</head>
+<body>
+    <h1 id="welcomeMessage"></h1>
+    
+    <script>
+        // Get username from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const username = urlParams.get('username');
+        
+        // Display welcome message
+        if (username && username !== "Enter your user name here") {
+            document.getElementById('welcomeMessage').innerHTML = 
+                `<span style="font-size: 36px; font-weight: bold;">Welcome ${username}!</span>`;
+        } else {
+            document.getElementById('welcomeMessage').textContent = 
+                "Welcome Guest!";
+        }
+    </script>
+</body>
+</html>

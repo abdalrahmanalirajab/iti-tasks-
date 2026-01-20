@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<select id="users"></select>
+<button id="btn" disabled>Show User</button>
+<div id="result"></div>
+
+<script>
+fetch("https://dummyjson.com/users")
+.then(res => res.json())
+.then(data => {
+
+    let users = data.users; 
+
+    let select = document.getElementById("users");
+
+    users.forEach(user => {
+        let option = document.createElement("option");
+        option.value = user.id;
+        option.textContent = user.firstName + " " + user.lastName;
+        select.appendChild(option);
+    });
+
+    document.getElementById("btn").disabled = false;
+});
+
+document.getElementById("btn").onclick = function () {
+    let id = document.getElementById("users").value;
+
+    fetch("https://dummyjson.com/users/" + id)
+    .then(res => res.json())
+    .then(user => {
+        document.getElementById("result").innerHTML =
+            user.firstName + " " + user.lastName + "<br>" + user.email;
+    });
+};
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+

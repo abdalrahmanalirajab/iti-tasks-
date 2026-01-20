@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang>
+
+<head>
+    <title>Assignment 3</title>
+</head>
+
+<body>
+
+    <h2>Click the Images</h2>
+
+    <img src="Untitled.jpeg" class="img" alt="task4">
+    <img src="Untitled.jpeg" class="img" alt="task4">
+    <img src="Untitled.jpeg" class="img" alt="task4">
+
+    <script>
+        var images = document.querySelectorAll(".img");
+        var counter = 0;
+
+        function increaseCounter() {
+            counter++;
+        }
+
+        function showScore() {
+            alert("Score: " + counter);
+        }
+
+        function gameOver() {
+            alert("Game Over");
+        }
+
+        images.forEach(function(img) {
+
+            img.addEventListener("click", increaseCounter);
+            img.addEventListener("click", showScore);
+
+        });
+
+        // after 3 seconds change behavior
+        setTimeout(function() {
+
+            images.forEach(function(img) {
+                img.removeEventListener("click", showScore);
+                img.addEventListener("click", gameOver);
+            });
+
+        }, 4000);
+    </script>
+
+</body>
+
+</html>

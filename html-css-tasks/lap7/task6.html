@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fading Gallery</title>
+    <style>
+        .gallery {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .gallery img {
+            width: 150px;
+            height: 100px;
+            opacity: 1;
+            transition: opacity 1s;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fading Photo Gallery</h1>
+    
+    <div class="gallery">
+        <img src="photo1.jpg" alt="Photo 1" 
+             onmouseover="fadeOut(this)" 
+             onmouseout="fadeIn(this)">
+        <img src="photo2.jpg" alt="Photo 2"
+             onmouseover="fadeOut(this)" 
+             onmouseout="fadeIn(this)">
+        <img src="photo3.jpg" alt="Photo 3"
+             onmouseover="fadeOut(this)" 
+             onmouseout="fadeIn(this)">
+        <img src="photo4.jpg" alt="Photo 4"
+             onmouseover="fadeOut(this)" 
+             onmouseout="fadeIn(this)">
+    </div>
+
+    <script>
+        function fadeOut(img) {
+            let opacity = 1;
+            const fadeEffect = setInterval(() => {
+                if (opacity <= 0.3) {
+                    clearInterval(fadeEffect);
+                } else {
+                    opacity -= 0.05;
+                    img.style.opacity = opacity;
+                }
+            }, 50);
+        }
+        
+        function fadeIn(img) {
+            let opacity = 0.3;
+            const fadeEffect = setInterval(() => {
+                if (opacity >= 1) {
+                    clearInterval(fadeEffect);
+                } else {
+                    opacity += 0.05;
+                    img.style.opacity = opacity;
+                }
+            }, 50);
+        }
+    </script>
+</body>
+</html>

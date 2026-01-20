@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login with Remember Me</title>
+</head>
+<body>
+    <h2>Login with Remember Me</h2>
+    <form id="loginForm">
+        <div>
+            <label>Username:</label>
+            <input type="text" id="username" required>
+        </div>
+        <div>
+            <label>Password:</label>
+            <input type="password" id="password" required>
+        </div>
+        <div>
+            <input type="checkbox" id="rememberMe">
+            <label for="rememberMe">Remember me</label>
+        </div>
+        <button type="submit">Login</button>
+    </form>
+
+    <script>
+        // Load saved credentials on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedUsername = localStorage.getItem('username');
+            const savedPassword = localStorage.getItem('password');
+            
+            if (savedUsername && savedPassword) {
+                document.getElementById('username').value = savedUsername;
+                document.getElementById('password').value = savedPassword;
+                document.getElementById('rememberMe').checked = true;
+            }
+        });
+
+        // Handle form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const rememberMe = document.getElementById('rememberMe').checked;
+            
+            if (rememberMe) {
+                // Save to localStorage
+                localStorage.setItem('username', username);
+                localStorage.setItem('password', password);
+                alert('Login successful! Credentials saved to localStorage.');
+            } else {
+                // Remove from localStorage if exists
+                localStorage.removeItem('username');
+                localStorage.removeItem('password');
+                alert('Login successful! Credentials not saved.');
+            }
+        });
+    </script>
+</body>
+</html>

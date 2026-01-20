@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clock Control</title>
+</head>
+<body>
+    <h1>Clock Control</h1>
+    
+    <button id="startClockBtn">Start Clock</button>
+    <div id="clockDisplay" style="font-size: 24px; margin: 20px 0;"></div>
+    
+    <script>
+        const startBtn = document.getElementById('startClockBtn');
+        const clockDisplay = document.getElementById('clockDisplay');
+        let clockInterval;
+        
+        // 2a: Handle onclick using JavaScript (not in HTML tag)
+        startBtn.onclick = function() {
+            alert("Clock Started");
+            startClock();
+        };
+        
+        function startClock() {
+            // Clear any existing interval
+            if (clockInterval) {
+                clearInterval(clockInterval);
+            }
+            
+            // Update clock immediately
+            updateClock();
+            
+            // Update clock every second
+            clockInterval = setInterval(updateClock, 1000);
+        }
+        
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString();
+            clockDisplay.textContent = timeString;
+        }
+        
+        // 2b: Stop clock when user clicks (alt + w)
+        document.addEventListener('keydown', function(event) {
+            if (event.altKey && event.key === 'w') {
+                clearInterval(clockInterval);
+                alert("Clock stopped");
+                clockDisplay.textContent = "Clock Stopped";
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alphabet-Only Input</title>
+</head>
+<body>
+    <h1>Registration Form</h1>
+    
+    <form>
+        <div>
+            <label for="firstName">First Name (letters only):</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Enter letters only">
+            <span id="firstNameError" style="color:red;"></span>
+        </div>
+        
+        <div>
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName">
+        </div>
+        
+        <button type="submit">Register</button>
+    </form>
+    
+    <script>
+        const firstNameInput = document.getElementById('firstName');
+        const firstNameError = document.getElementById('firstNameError');
+       
+        
+        // Additional validation on blur
+        firstNameInput.addEventListener('blur', function() {
+            const value = this.value;
+            const lettersOnly = /^[A-Za-z\s]+$/;
+            
+            if (value && !lettersOnly.test(value)) {
+                firstNameError.textContent = "Only letters are allowed!";
+                this.focus();
+            } else {
+                firstNameError.textContent = "";
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+
+<script>
+    const form = document.getElementById('registrationForm');
+    
+    form.addEventListener('submit', function(event) {
+        // Validate full name
+        const name = fullNameInput.value.trim();
+        const isNameValid = name !== '' && name.length > 3;
+        
+        // Validate passwords
+        const password = passwordInput.value;
+        const repeatPassword = repeatPasswordInput.value;
+        const isPasswordValid = password !== '' && repeatPassword !== '' && password === repeatPassword;
+        
+        if (!isNameValid || !isPasswordValid) {
+            event.preventDefault();
+            alert('Plz correct the validation errors first.');
+            
+            // Show errors if hidden
+            if (!isNameValid) {
+                nameError.textContent = 'invalid name';
+                fullNameInput.style.backgroundColor = 'gray';
+            }
+            if (!isPasswordValid) {
+                passwordError.textContent = 'Passwords do not match or are empty';
+                passwordInput.style.backgroundColor = 'gray';
+                repeatPasswordInput.style.backgroundColor = 'gray';
+            }
+        } else {
+            // Form is valid - redirect to thank you page
+            event.preventDefault(); // Prevent actual submission for demo
+            
+            // Create thank you page in same window
+            const userName = encodeURIComponent(fullNameInput.value);
+            window.location.href = `thankyou.html?name=${userName}`;
+        }
+    });
+</script>
+

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Popup Window Demo</title>
+</head>
+<body>
+    <h1>Popup Window Control</h1>
+    
+    <a href="#" id="openLink">Open Advertising Window (after 3 seconds)</a>
+    <br><br>
+    <a href="#" id="closeLink">Close Advertising Window</a>
+    
+    <script>
+        let popupWindow;
+        
+        document.getElementById('openLink').addEventListener('click', function(event) {
+            event.preventDefault();
+            
+            // Wait 3 seconds then open window
+            setTimeout(function() {
+                popupWindow = window.open("", "Advertising", "width=500,height=400");
+                
+                if (popupWindow) {
+                    // Write content to the new window
+                    popupWindow.document.write(`
+                        <html>
+                        <head><title>Advertising Window</title></head>
+                        <body>
+                            <h1>Special Offers!</h1>
+                            <p>This is an advertising window with long content.</p>
+                            ${Array(20).fill().map((_, i) => 
+                                `<p>Paragraph ${i+1}: Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>`
+                            ).join('')}
+                        </body>
+                        </html>
+                    `);
+                    popupWindow.document.close();
+                } else {
+                    alert("Popup blocked! Please allow popups for this site.");
+                }
+            }, 3000);
+            
+            alert("Window will open in 3 seconds...");
+        });
+        
+        document.getElementById('closeLink').addEventListener('click', function(event) {
+            event.preventDefault();
+            
+            if (popupWindow && !popupWindow.closed) {
+                popupWindow.close();
+                alert("Advertising window closed");
+            } else {
+                alert("No advertising window is open");
+            }
+        });
+    </script>
+</body>
+</html>

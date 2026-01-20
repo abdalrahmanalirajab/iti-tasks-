@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<select id="users"></select>
+<button id="btn" disabled>Show User</button>
+<div id="result"></div>
+
+<script>
+async function loadUsers() {
+    let response = await fetch("https://dummyjson.com/users");
+    let data = await response.json();
+
+    let users = data.users;
+    let select = document.getElementById("users");
+
+    users.forEach(user => {
+        let option = document.createElement("option");
+        option.value = user.id;
+        option.textContent = user.firstName + " " + user.lastName;
+        select.appendChild(option);
+    });
+
+    document.getElementById("btn").disabled = false;
+}
+
+loadUsers();
+
+document.getElementById("btn").onclick = async function () {
+    let id = document.getElementById("users").value;
+
+    let response = await fetch("https://dummyjson.com/users/" + id);
+    let user = await response.json();
+
+    document.getElementById("result").innerHTML =
+        user.firstName + " " + user.lastName + "<br>" + user.email;
+};
+</script>
+
+</body>
+</html>

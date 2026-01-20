@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AJAX with XMLHttpRequest</title>
+</head>
+<body>
+    <h2>Part 5a: Get User by ID</h2>
+    <input type="number" id="userId" placeholder="Enter user ID (1-12)" min="1" max="12">
+    <button onclick="getUserById()">Get User</button>
+    <div id="userData"></div>
+    
+    <hr>
+    
+    <h2>Part 5b & 5c: Select User from List</h2>
+    <select id="userList" onchange="getSelectedUser()">
+        <option value="">Select a user</option>
+    </select>
+    <div id="selectedUser"></div>
+
+    <script>
+        // XMLHttpRequest utility function
+        function makeRequest(method, url, callback) {
+            const xhr = new XMLHttpRequest();
+            xhr.open(method, url, true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    const response = JSON.parse(xhr.responseText);
+                    callback(response);
+                } else if (xhr.readyState === 4) {
+                    console.error('Error:', xhr.status, xhr.statusText);
+                }
+            };
+            xhr.send();
+        }
+        
+        // Part 5a: Get user by ID
+        function getUserById() {
+            const userId = document.getElementById('userId').value;
+            if (!userId) {
+                alert('Please enter a user ID');
+                return;
+            }
+            
+            const url = `https://reqres.in/api/users/${userId}`;
+            makeRequest('GET', url, function(data) {
+                if (data.data) {
+                    const user = data.data;
+                    document.getElementById('userData').innerHTML = `
+                        <h3>${user.first_name} ${user.last_name}</h3>
+                        <img src="${user.avatar}" alt="Avatar" width="100">
+                        <p>Email: ${user.email}</p>
+                    `;
+                } else {
+                    document.getElementById('userData').innerHTML = 
+                        '<p>User not found</p>';
+                }
+            });
+        }
+        
+        // Part 5b: Load all users into dropdown
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAllUsers();
+        });
+        
+        function loadAllUsers() {
+            const url = 'https://reqres.in/api/users';
+            makeRequest('GET', url, function(data) {
+                const users = data.data;
+                const select = document.getElementById('userList');
+                
+                users.forEach(user => {
+                    const option = document.createElement('option');
+                    option.value = user.id;
+                    option.textContent = `${user.first_name} ${user.last_name}`;
+                    select.appendChild(option);
+                });
+            });
+        }
+        
+        // Part 5c: Get selected user
+        function getSelectedUser() {
+            const userId = document.getElementById('userList').value;
+            if (!userId) {
+                document.getElementById('selectedUser').innerHTML = '';
+                return;
+            }
+            
+            const url = `https://reqres.in/api/users/${userId}`;
+            makeRequest('GET', url, function(data) {
+                if (data.data) {
+                    const user = data.data;
+                    document.getElementById('selectedUser').innerHTML = `
+                        <h3>${user.first_name} ${user.last_name}</h3>
+                        <img src="${user.avatar}" alt="Avatar" width="100">
+                        <p>Email: ${user.email}</p>
+                    `;
+                }
+            });
+        }
+    </script>
+</body>
+</html>

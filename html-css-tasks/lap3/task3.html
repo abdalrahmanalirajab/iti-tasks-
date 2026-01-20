@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<button onclick="addUser()">Add User</button>
+
+<script>
+function addUser() {
+    fetch("https://dummyjson.com/users/add", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            firstName: "Ali",
+            lastName: "Ahmed",
+            age: 25
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+        alert("User added with id: " + data.id);
+    });
+}
+</script>
+
+</body>
+</html>
+

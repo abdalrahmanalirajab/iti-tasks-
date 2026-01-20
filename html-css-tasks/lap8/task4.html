@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Array of Students</title>
+</head>
+<body>
+    <h2>Student List with Skills</h2>
+    <div id="students"></div>
+    
+    <div style="margin-top: 30px; background: #f5f5f5; padding: 15px;">
+        <h3>Answers:</h3>
+        <p><strong>4a.</strong> Yes, JSON can hold null and Boolean values (true/false).</p>
+        <p><strong>4b.</strong> JSON is simpler, lighter, and easier to parse. XML uses tags, is more verbose, and supports schemas.</p>
+    </div>
+
+    <script>
+        // Array of 3 students
+        const students = [
+            {
+                ID: 1,
+                name: "abody ali",
+                Age: 23,
+                Address: " damarays",
+                Skills: ["JavaScript", "HTML", "CSS"],
+                IsLeader: true
+            },
+            {
+                ID: 2,
+                name: "yousef helal",
+                Age: 21,
+                Address: null,  // Address is null as required
+                Skills: ["Python", "Java", "SQL"],
+                IsLeader: false
+            },
+            {
+                ID: 3,
+                name: "yousef ahmed",
+                Age: 22,
+                Address: "miniya",
+                Skills: ["React", "Node.js", "MongoDB"],
+                IsLeader: true
+            }
+        ];
+
+        // Display each student's name and skills
+        const container = document.getElementById('students');
+        
+        students.forEach(student => {
+            const div = document.createElement('div');
+            div.innerHTML = `
+                <h3>${student.name}</h3>
+                <p><strong>Skills:</strong> ${student.Skills.join(', ')}</p>
+                <hr>
+            `;
+            container.appendChild(div);
+        });
+    </script>
+</body>
+</html>

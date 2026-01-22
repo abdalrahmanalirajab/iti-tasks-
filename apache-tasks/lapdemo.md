@@ -44,8 +44,8 @@ lap1
 
   =================================================
   6=> Change default index page
-   -sudo nano /var/www/html/default.html (create new page defult.html)
-   -sudo nano /etc/apache2/mods-enabled/dir.conf (open this file and change this line )
+   - sudo nano /var/www/html/default.html (create new page defult.html)
+   - sudo nano /etc/apache2/mods-enabled/dir.conf (open this file and change this line )
      'DirectoryIndex default.html index.html'
-   -sudo systemctl restart apache2
+   - sudo systemctl restart apache2
 

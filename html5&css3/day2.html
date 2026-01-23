@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 2 – CSS3 Assignments</title>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+/* ===== General ===== */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  padding: 20px;
+}
+
+/* ===== 1 & 2 Navbar ===== */
+.navbar {
+  list-style: none;
+  background: #333;
+  padding: 10px 20px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.navbar li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  transition: 0.5s;
+}
+
+.navbar a i {
+  margin-right: 5px;
+  transition: 0.5s;
+}
+
+.navbar a:hover {
+  background: orange;
+  border-radius: 10px;
+}
+
+.navbar a:hover i {
+  color: black;
+}
+
+/* ===== 4 Contact Chip ===== */
+.chip {
+  display: flex;
+  align-items: center;
+  background: #eee;
+  width: 220px;
+  padding: 10px;
+  border-radius: 25px;
+  margin: 30px 0;
+  transition: 0.5s;
+  overflow: hidden;
+}
+
+.chip img {
+  width: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.close {
+  margin-left: auto;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* ===== 5 Vertical Name ===== */
+.vertical {
+  writing-mode: vertical-rl;
+  height: 100vh;
+  background: #444;
+  color: white;
+  padding: 10px;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+/* ===== 6 Gallery ===== */
+.gallery img {
+  width: 200px;
+  margin: 20px;
+  transition: 0.75s;
+}
+
+.gallery img:hover {
+  transform: scale(1.5);
+}
+
+/* ===== 7 Search Input ===== */
+.search {
+  width: 150px;
+  padding: 10px;
+  transition: 0.75s;
+}
+
+.search:focus {
+  width: 300px;
+}
+
+/* ===== 8 Tiger Animation ===== */
+.tiger {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 120px;
+  animation: walk 6s linear infinite alternate;
+}
+
+@keyframes walk {
+  from {
+    left: 0;
+    transform: scaleX(1);
+  }
+  to {
+    left: 85%;
+    transform: scaleX(-1);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 1 & 2 Navbar -->
+<ul class="navbar">
+  <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
+  <li><a href="#"><i class="fa fa-user"></i>About</a></li>
+  <li><a href="#"><i class="fa fa-phone"></i>Contact</a></li>
+  <li><a href="#"> <i class="fa font-family"></i> famaily</a></li>
+</ul>
+
+<!-- 3 Custom Font Paragraph -->
+<p>
+  This paragraph uses a custom Google Font (Poppins).
+</p>
+
+<!-- 4 Contact Chip -->
+<div class="chip" id="chip">
+  <img src="./photo/myphoto.jpeg" alt="Abdo Ali">
+  <span>abdo Ali</span>
+  <span class="close" onclick="closeChip()">×</span>
+</div>
+
+<!-- 6 Gallery -->
+<h3>Photo Gallery</h3>
+<div class="gallery">
+  <img src="./photo/breaking.jpg">
+  <img src="./photo/lacase.jpeg">
+  <img src="./photo/prison.jpg">
+  <img src="./photo/viking.jpg">
+</div>
+
+<!-- 7 Search -->
+<h3>Search</h3>
+<input type="search" class="search" placeholder="Search...">
+
+<!-- 5 Vertical Name -->
+<div class="vertical">ABDELRAHMAN</div>
+
+<!-- 8 Tiger -->
+<img src="./photo/tiger.gif" class="tiger">
+
+<script>
+/* Contact Chip Close */
+function closeChip() {
+  document.getElementById("chip").style.width = "0";
+}
+</script>
+
+</body>
+</html>
+

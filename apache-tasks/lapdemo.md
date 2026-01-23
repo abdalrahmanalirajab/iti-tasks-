@@ -7,7 +7,7 @@ lap1
 2=> create two file html page1 and page2 
  -cd /var/www/html ( go to this directory)
  - sudo nano page1.html (http://localhost/page1.html) 
- -sudo nano page2.html (http://lovalhost/page2.html)
+ - sudo nano page2.html (http://lovalhost/page2.html)
  =============================================================================
  3=> Redirect from page1 to page2
  -sudo a2enmod rewrite (a2emod apache2 enble model rewrite)
@@ -38,7 +38,7 @@ lap1
     AuthType Basic
     AuthName "Protected Area"
     AuthUserFile /etc/apache2/.htpasswd
-    Require the user name 
+    Require the (user name )
   </Directory>
   - sudo systemctl restart apache2
 

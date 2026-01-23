@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Canvas Transforms</title>
+    <script type="text/javascript">
+
+        window.onload= function () {
+
+            var ctx = document.getElementById('canvas').getContext('2d');
+
+            // Change offset
+            ctx.translate(200, 250);//Remaps the (0,0) position on the canvas
+
+            // Rotate
+            for (i = 0; i < 10; i++) {
+                ctx.rotate(0.2 * Math.PI);//Rotates the current drawing
+				//alert(i);
+
+                ctx.fillStyle = "rgba(0, 128, 255, 0.5)";
+                ctx.fillRect(10, 0, 150, 50);
+            }
+
+        };
+
+    </script>
+</head>
+<body>
+    <canvas id="canvas" width="500" height="500">
+    </canvas>
+</body>
+</html>

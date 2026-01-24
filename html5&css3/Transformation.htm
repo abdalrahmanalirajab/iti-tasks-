@@ -1,31 +1,108 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Canvas Transforms</title>
-    <script type="text/javascript">
-
-        window.onload= function () {
-
-            var ctx = document.getElementById('canvas').getContext('2d');
-
-            // Change offset
-            ctx.translate(200, 250);//Remaps the (0,0) position on the canvas
-
-            // Rotate
-            for (i = 0; i < 10; i++) {
-                ctx.rotate(0.2 * Math.PI);//Rotates the current drawing
-				//alert(i);
-
-                ctx.fillStyle = "rgba(0, 128, 255, 0.5)";
-                ctx.fillRect(10, 0, 150, 50);
-            }
-
-        };
-
-    </script>
+<meta charset="UTF-8">
+<title>Lab 3 </title>
+<style>
+  canvas { border:1px solid #000; margin:10px 0; }
+</style>
 </head>
 <body>
-    <canvas id="canvas" width="500" height="500">
-    </canvas>
+
+<!-- ========== Task 1 ========== -->
+
+<svg width="200" height="200">
+  <circle cx="100" cy="100" r="80" fill="yellow" stroke="black"/>
+  <ellipse class="part" cx="70" cy="80" rx="10" ry="15" fill="black"/>
+  <ellipse class="part" cx="130" cy="80" rx="10" ry="15" fill="black"/>
+  <circle class="part" cx="100" cy="100" r="6" fill="black"/>
+  <path class="part" d="M70 130 Q100 160 130 130"
+        stroke="black" stroke-width="3" fill="none"/>
+</svg>
+<br>
+<!-- ========== Task 2 ========== -->
+
+<object id="svgObj" type="image/svg+xml" data="face.svg"
+        width="200" height="200"></object>
+
+<br>
+<!-- ========== Task 3 ========== -->
+<canvas id="faceCanvas" width="200" height="200"></canvas>
+<br>
+<!-- ========== Task 4 ========== -->
+<canvas id="nameCanvas" width="300" height="300"></canvas>
+
+<script>
+/* ===== Task 1 Hover ===== */
+document.querySelectorAll('.part').forEach(el => {
+  el.addEventListener('mouseover', () => el.setAttribute('fill','red'));
+  el.addEventListener('mouseout',  () => el.setAttribute('fill','black'));
+});
+
+/* ===== Task 2 Hover ===== */
+const svgObj = document.getElementById('svgObj');
+svgObj.addEventListener('load', () => {
+  const svg = svgObj.contentDocument;
+  svg.querySelectorAll('.part').forEach(el => {
+    el.addEventListener('mouseover', () => el.setAttribute('fill','blue'));
+    el.addEventListener('mouseout',  () => el.setAttribute('fill','black'));
+  });
+});
+
+/* ===== Task 3 Canvas ===== */
+const c = document.getElementById('faceCanvas');
+const ctx = c.getContext('2d');
+
+function sadFace(w=200){
+  ctx.clearRect(0,0,300,300);
+  ctx.beginPath();
+  ctx.arc(100,100,80,0,Math.PI*2);
+  ctx.fillStyle="yellow"; ctx.fill();
+  ctx.fillStyle="black";
+  ctx.beginPath(); ctx.arc(70,80,10,0,Math.PI*2); ctx.fill();
+  ctx.beginPath(); ctx.arc(130,80,10,0,Math.PI*2); ctx.fill();
+  ctx.beginPath();
+  ctx.arc(100,130,40,0,Math.PI,true);
+  ctx.stroke();
+}
+
+function smileFace(){
+  ctx.clearRect(0,0,300,300);
+  ctx.beginPath();
+  ctx.arc(125,100,80,0,Math.PI*2);
+  ctx.fillStyle="yellow"; ctx.fill();
+  ctx.fillStyle="black";
+  ctx.beginPath(); ctx.arc(95,80,10,0,Math.PI*2); ctx.fill();
+  ctx.beginPath(); ctx.arc(155,80,10,0,Math.PI*2); ctx.fill();
+  ctx.beginPath();
+  ctx.arc(125,120,40,0,Math.PI,false);
+  ctx.stroke();
+}
+
+sadFace();
+c.onmousedown = smileFace;
+c.onmouseup   = sadFace;
+
+/* ===== Task 4 Canvas ===== */
+const nc = document.getElementById('nameCanvas');
+const nctx = nc.getContext('2d');
+
+nctx.globalAlpha = 0.5;
+nctx.beginPath();
+nctx.arc(150,150,100,0,Math.PI*2);
+nctx.fillStyle="blue";
+nctx.fill();
+
+const g = nctx.createLinearGradient(50,150,250,150);
+g.addColorStop(0,"red");
+g.addColorStop(1,"green");
+
+nctx.globalAlpha = 1;
+nctx.font="bold 30px Arial";
+nctx.fillStyle=g;
+nctx.textAlign="center";
+nctx.fillText("Abdulrahman",150,160);
+</script>
+
 </body>
 </html>

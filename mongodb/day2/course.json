@@ -1,0 +1,43 @@
+[
+  {
+    "CourseName": "Databases",
+    "FinalMark": 100
+  },
+  {
+    "CourseName": "Data Structures",
+    "FinalMark": 100
+  },
+  {
+    "CourseName": "Algorithms",
+    "FinalMark": 100
+  },
+  {
+    "CourseName": "Operating Systems",
+    "FinalMark": 100
+  },
+  {
+    "CourseName": "Computer Networks",
+    "FinalMark": 100
+  },
+  {
+    "CourseName": "Software Engineering",
+    "FinalMark": 100
+  },
+  {
+    "CourseName": "Artificial Intelligence",
+    "FinalMark": 100
+  },
+  {
+    "CourseName": "Machine Learning",
+    "FinalMark": 100
+  },
+  {
+    "CourseName": "Web Development",
+    "FinalMark": 100
+  },
+  {
+    "CourseName": "Cyber Security",
+    "FinalMark": 100
+  }
+]
+

@@ -1,0 +1,22 @@
+[
+  {
+    "FirstName": "John",
+    "LastName": "Doe",
+    "IsFired": false,
+    "FacultyID": { "$oid": "65f000000000000000000001" },
+    "Courses": [
+      { "CourseID": { "$oid": "660000000000000000000001" }, "Grade": 85 },
+      { "CourseID": { "$oid": "660000000000000000000002" }, "Grade": 92 }
+    ]
+  },
+  {
+    "FirstName": "Alice",
+    "LastName": "Smith",
+    "IsFired": false,
+    "FacultyID": { "$oid": "65f000000000000000000002" },
+    "Courses": [
+      { "CourseID": { "$oid": "660000000000000000000003" }, "Grade": 88 }
+    ]
+  }
+]
+

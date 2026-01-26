@@ -1,0 +1,43 @@
+[
+  {
+    "FacultyName": "Engineering",
+    "Address": "123 Main St"
+  },
+  {
+    "FacultyName": "Computer Science",
+    "Address": "45 Silicon Ave"
+  },
+  {
+    "FacultyName": "Business",
+    "Address": "78 Market Road"
+  },
+  {
+    "FacultyName": "Medicine",
+    "Address": "12 Health Blvd"
+  },
+  {
+    "FacultyName": "Law",
+    "Address": "9 Justice St"
+  },
+  {
+    "FacultyName": "Architecture",
+    "Address": "33 Design Lane"
+  },
+  {
+    "FacultyName": "Arts",
+    "Address": "56 Creative Way"
+  },
+  {
+    "FacultyName": "Science",
+    "Address": "101 Research Dr"
+  },
+  {
+    "FacultyName": "Education",
+    "Address": "67 Learning Park"
+  },
+  {
+    "FacultyName": "Pharmacy",
+    "Address": "88 Medicine Circle"
+  }
+]
+

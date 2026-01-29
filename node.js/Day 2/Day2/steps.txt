@@ -1,0 +1,6 @@
+1- npm init -y 
+2- npm i express nodemon 
+3- in package.json --> 
+            start: "nodemon index.js"
+    type: module 
+

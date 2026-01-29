@@ -1,43 +1,18 @@
 [
   {
-    "CourseName": "Databases",
-    "FinalMark": 100
+    "_id": ObjectId("64f100000000000000000001"),
+    "FacultyName": "Engineering",
+    "Address": "123 Main St"
   },
   {
-    "CourseName": "Data Structures",
-    "FinalMark": 100
+    "_id": ObjectId("64f100000000000000000002"),
+    "FacultyName": "Computer Science",
+    "Address": "45 Tech Avenue"
   },
   {
-    "CourseName": "Algorithms",
-    "FinalMark": 100
-  },
-  {
-    "CourseName": "Operating Systems",
-    "FinalMark": 100
-  },
-  {
-    "CourseName": "Computer Networks",
-    "FinalMark": 100
-  },
-  {
-    "CourseName": "Software Engineering",
-    "FinalMark": 100
-  },
-  {
-    "CourseName": "Artificial Intelligence",
-    "FinalMark": 100
-  },
-  {
-    "CourseName": "Machine Learning",
-    "FinalMark": 100
-  },
-  {
-    "CourseName": "Web Development",
-    "FinalMark": 100
-  },
-  {
-    "CourseName": "Cyber Security",
-    "FinalMark": 100
+    "_id": ObjectId("64f100000000000000000003"),
+    "FacultyName": "Business",
+    "Address": "78 Market Road"
   }
 ]
 

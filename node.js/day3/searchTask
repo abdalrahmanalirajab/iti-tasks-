@@ -1,0 +1,20 @@
+What __v Means ??? 
+
+ __v is the version key:
+By default, Mongoose adds this field to every document.
+It is used internally to keep track of how many times a document has been modified.
+============================================================================================
+
+==>> Initial value ??
+
+When a document is first created, __v is set to 0.
+Increment behavior:
+Each time you update the document, Mongoose may increment __v to reflect the new version.
+
+==================================================================================================
+
+==>> Why It Exists ??
+
+Mongoose uses __v to prevent conflicting updates.
+Example: If two processes try to update the same document at the same time, Mongoose checks the __v value. If the version has changed since the process last read it, the update can be rejected to avoid overwriting someone else’s changes.
+

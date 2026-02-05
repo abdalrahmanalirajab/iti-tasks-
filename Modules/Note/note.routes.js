@@ -15,5 +15,4 @@ noteRoutes.delete("/notes/:id", deleteNote);
 noteRoutes.get("/mynotes", getMyNotes);
 
 
-
 export default noteRoutes
